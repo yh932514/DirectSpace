@@ -1,0 +1,39 @@
+.cover {
+    background-image:url(/assets/images/cover.png);
+    color: white;
+}
+
+.detail-button{
+    display: flex;
+    align-items: center;
+}
+
+.service-title {
+    position: absolute;
+    bottom:0;
+    left: 4%;
+}
+
+.process {
+    position:relative;
+    z-index: -2;
+}
+
+.process li.r:before {
+  content : "";
+  position: absolute;
+  left    : 12px;
+  top  : 54px;
+  height  : 100%;
+  border-left:2px dotted #191f2e;
+  z-index: -1;
+}
+
+.process li.r {
+    position:absolute;
+    height:74%;
+}
+
+.process .dot{
+    margin: 30px 20px 30px 0px;
+}
