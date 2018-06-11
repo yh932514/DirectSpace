@@ -5,20 +5,18 @@ import {SettingsProfileComponent} from './settings-profile/settings-profile.comp
 import {AppointmentComponent} from './appointment/appointment.component';
 import {MainComponent} from './main.component';
 
-const mainRoutes: Routes = [
-  {
-  	  {path: '',component:  MainComponent},
-      {path: 'settings-profile', component: SettingsProfileComponent},
-      {path: 'appointment', component: AppointmentComponent}
-    
-    
-  }
-];
+// const mainRoutes: Routes = [
+//   {
+//   	  {path: '/',component:  MainComponent},
+//       {path: 'settings-profile', component: SettingsProfileComponent},
+//       {path: 'appointment', component: AppointmentComponent}
+//   }
+// ];
 
-@NgModule({
-  imports: [ RouterModule.forChild(mainRoutes) ],
-  exports: [RouterModule]
-})
+// @NgModule({
+//   imports: [ RouterModule.forChild(mainRoutes) ],
+//   exports: [RouterModule]
+// })
 
 export class MainRoutingModule {
 }
