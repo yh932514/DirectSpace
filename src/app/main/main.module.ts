@@ -7,6 +7,7 @@ import {SettingsProfileComponent} from './settings-profile/settings-profile.comp
 import {MainComponent} from './main.component';
 import {AppointmentComponent} from './appointment/appointment.component';
 import { OurstoryComponent } from './ourstory/ourstory.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 //import {DirectspaceService} from './directspace.service';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { OurstoryComponent } from './ourstory/ourstory.component';
     MainComponent,
     SettingsProfileComponent,
     AppointmentComponent,
-    OurstoryComponent
+    OurstoryComponent,
+    ThankYouComponent
   ]
 })
 

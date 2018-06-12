@@ -5,6 +5,7 @@ import {HomeComponent} from './main/home/home.component';
 import {SettingsProfileComponent} from './main/settings-profile/settings-profile.component';
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
+import { ThankYouComponent } from './main/thank-you/thank-you.component';
 import {AppConfig} from './config/app.config';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'settings-profile', component: SettingsProfileComponent},
   {path: 'appointment', component: AppointmentComponent},
   {path: 'ourstory', component: OurstoryComponent},
+  {path: 'thank-you', component: ThankYouComponent},
   //also add component page on app.module.ts
   // otherwise redirect to home
   {path: '**', redirectTo: '/' + AppConfig.routes.home}
