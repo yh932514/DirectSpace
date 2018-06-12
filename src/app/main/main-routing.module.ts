@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+//import {RouterModule, Routes} from '@angular/router';
 
-import {SettingsProfileComponent} from './settings-profile/settings-profile.component';
-import {AppointmentComponent} from './appointment/appointment.component';
+//import {SettingsProfileComponent} from './settings-profile/settings-profile.component';
+//import {AppointmentComponent} from './appointment/appointment.component';
 import {MainComponent} from './main.component';
 
 // const mainRoutes: Routes = [

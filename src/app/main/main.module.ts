@@ -6,6 +6,7 @@ import {MainRoutingModule} from './main-routing.module';
 import {SettingsProfileComponent} from './settings-profile/settings-profile.component';
 import {MainComponent} from './main.component';
 import {AppointmentComponent} from './appointment/appointment.component';
+import { OurstoryComponent } from './ourstory/ourstory.component';
 //import {DirectspaceService} from './directspace.service';
 
 @NgModule({
@@ -16,7 +17,8 @@ import {AppointmentComponent} from './appointment/appointment.component';
   declarations: [
     MainComponent,
     SettingsProfileComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    OurstoryComponent
   ]
 })
 
