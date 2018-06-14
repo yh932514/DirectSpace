@@ -5,3 +5,9 @@
                   <h2 class="m-2 pt-4 font-weight-light">Thank You!</h2>
 				  <p class="py-2 text-secondary font-weight-light">Your appointment has been received.</p>
 			  </div></div></div>
+
+<ul>
+  <li *ngFor="let user of users">{{user}}
+      <span class="badge">{{user.name}}</span> {{user.status}}
+  </li>
+</ul>
