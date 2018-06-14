@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../user';
-import { UserService } from '../../user.service';
+import { USERS } from '../../mock-users';
 
 @Component({
   selector: 'app-thank-you',
@@ -8,14 +7,10 @@ import { UserService } from '../../user.service';
   styleUrls: ['./thank-you.component.scss']
 })
 export class ThankYouComponent implements OnInit {
-  users: User[];
-  constructor(private userService: UserService) { }
 
+  users = USERS;
+  constructor() { }
   ngOnInit() {
-      this.getUsers ();
   }
-   getUsers(): void {
-    this.userService.getUsers()
-    .subscribe(users => this.users = users);
-  }
+
 }

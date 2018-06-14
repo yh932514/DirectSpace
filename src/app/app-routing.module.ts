@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'thank-you', component: ThankYouComponent},
   //also add component page on app.module.ts
   // otherwise redirect to home
-  {path: '**', redirectTo: '/' + AppConfig.routes.home}
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({
