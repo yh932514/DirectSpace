@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {APP_BASE_HREF} from '@angular/common';
+import {MainComponent} from './main.component';
+import {MainModule} from './main.module';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-
-import { MainComponent } from './main.component';
 
 describe('MainComponent', () => {
   beforeEach(async(() => {
@@ -16,8 +16,4 @@ describe('MainComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
