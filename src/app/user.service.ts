@@ -13,10 +13,12 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private usersUrl = 'api/users';  // URL to web api
+  private usersUrl : string;  // URL to web api
 
   constructor(
-    private http: HttpClient) {}
+    private http: HttpClient) {
+      this.usersUrl = 'api/user';
+    }
 
   /** GET users from the server */
   getUsers (): Observable<User[]> {

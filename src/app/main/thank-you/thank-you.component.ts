@@ -25,11 +25,4 @@ export class ThankYouComponent implements OnInit {
     .subscribe(users => this.users = users);
   }
 
-/*
-  users = USERS;
-  constructor() { }
-  ngOnInit() {
-  }
-*/
-
 }

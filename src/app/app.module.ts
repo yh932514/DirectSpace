@@ -4,13 +4,13 @@ import { FormsModule }      from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import {UserService} from './user.service'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrameModule } from './frame/frame.module';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
-import { MainComponent } from './main/main.component';
 import { HomeComponent } from './main/home/home.component';
 import { SettingsProfileComponent } from './main/settings-profile/settings-profile.component';
 import {AppointmentComponent} from './main/appointment/appointment.component';
@@ -28,7 +28,7 @@ import { ThankYouComponent } from './main/thank-you/thank-you.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     HttpClientModule,
      // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -37,7 +37,8 @@ import { ThankYouComponent } from './main/thank-you/thank-you.component';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     FrameModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   bootstrap: [AppComponent]
 })

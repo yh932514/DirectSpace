@@ -6,7 +6,6 @@ import {SettingsProfileComponent} from './main/settings-profile/settings-profile
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
 import { ThankYouComponent } from './main/thank-you/thank-you.component';
-import {AppConfig} from './config/app.config';
 
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', component: HomeComponent},
