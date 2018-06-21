@@ -8,10 +8,7 @@ import {Location} from '@angular/common';
   selector: 'app-main',
   templateUrl: './main.component.html'
 })
-export class MainComponent implements OnInit{
+export class MainComponent{
 
-  constructor(private location: Location, private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {}
-
+  constructor() { }
 }
