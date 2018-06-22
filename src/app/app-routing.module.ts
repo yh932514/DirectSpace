@@ -6,6 +6,9 @@ import {SettingsProfileComponent} from './main/settings-profile/settings-profile
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
 import { ThankYouComponent } from './main/thank-you/thank-you.component';
+import { SignupComponent } from './main/signup/signup.component';
+import { LoginComponent } from './main/login/login.component';
+import { HelpComponent } from './main/help/help.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', component: HomeComponent},
@@ -14,6 +17,9 @@ const routes: Routes = [
   {path: 'appointment', component: AppointmentComponent},
   {path: 'ourstory', component: OurstoryComponent},
   {path: 'thank-you', component: ThankYouComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'help', component: HelpComponent},
   //also add component page on app.module.ts
   // otherwise redirect to home
   {path: '**', redirectTo: '/'}

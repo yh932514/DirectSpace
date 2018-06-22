@@ -16,6 +16,9 @@ import { SettingsProfileComponent } from './main/settings-profile/settings-profi
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
 import { ThankYouComponent } from './main/thank-you/thank-you.component';
+import { SignupComponent } from './main/signup/signup.component';
+import { LoginComponent } from './main/login/login.component';
+import { HelpComponent } from './main/help/help.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ThankYouComponent } from './main/thank-you/thank-you.component';
     SettingsProfileComponent, 
     AppointmentComponent,
     OurstoryComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    SignupComponent,
+    LoginComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

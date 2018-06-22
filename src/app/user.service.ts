@@ -17,7 +17,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient) {
-      this.usersUrl = 'api/user';
+      this.usersUrl = '/api/user';
     }
 
   /** GET users from the server */
