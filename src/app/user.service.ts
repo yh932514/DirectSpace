@@ -17,7 +17,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient) {
-      this.usersUrl = '/api/user';
+      this.usersUrl = 'http://ec2-18-222-59-12.us-east-2.compute.amazonaws.com:3001/api/user';
     }
 
   /** GET users from the server */
