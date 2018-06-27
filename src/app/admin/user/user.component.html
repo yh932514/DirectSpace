@@ -1,0 +1,61 @@
+<div class="border-top p-2 ">
+    <div class="container">
+    <input type="text" id="searchName" placeholder="Search for names.." title="Type in a name" (keyup)="onKey($event)">
+    <div class="form-group">
+      <div class="form-check form-check-inline  col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">ID</label>
+      </div>
+      <div class="form-check form-check-inline   col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Project Type</label>
+      </div>
+      <div class="form-check form-check-inline   col-md-2">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+          <label class="form-check-label" for="inlineRadio2">Comments</label>
+        </div>
+      <div class="form-check form-check-inline   col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Address</label>
+      </div>
+      <div class="form-check form-check-inline   col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Name</label>
+      </div>
+      <div class="form-check form-check-inline   col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Email</label>
+      </div>
+      <div class="form-check form-check-inline   col-md-2">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Username</label>
+      </div>
+    </div>
+    <div class="table-responsive form-group" id="tbody" style="margin: 40px 0px 0px 0px;">          
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Project Type</th>
+              <th>Comments</th>
+              <th>Address</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <th>{{user.name}}</th>
+              <th>{{user._id}}</th>
+              <th>{{user.projectType}}</th>
+              <th>{{user.comments}}</th>
+              <th>{{user.address}}</th>
+              <th>{{user.email}}</th>
+              <th>{{user.username}}</th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>

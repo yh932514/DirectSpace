@@ -10,6 +10,8 @@ import { SignupComponent } from './main/signup/signup.component';
 import { LoginComponent } from './main/login/login.component';
 import { HelpComponent } from './main/help/help.component';
 
+import { UserComponent } from './admin/user/user.component';
+
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', component: HomeComponent},
   {path: 'index', redirectTo: ''},
@@ -20,6 +22,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'help', component: HelpComponent},
+  {path: 'admin/user', component: UserComponent},
   //also add component page on app.module.ts
   // otherwise redirect to home
   {path: '**', redirectTo: '/'}

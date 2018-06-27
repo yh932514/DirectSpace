@@ -17,6 +17,8 @@ import { ThankYouComponent } from './main/thank-you/thank-you.component';
 import { SignupComponent } from './main/signup/signup.component';
 import { LoginComponent } from './main/login/login.component';
 import { HelpComponent } from './main/help/help.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './admin/user/user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HelpComponent } from './main/help/help.component';
     ThankYouComponent,
     SignupComponent,
     LoginComponent,
-    HelpComponent
+    HelpComponent,
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
