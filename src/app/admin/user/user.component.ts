@@ -15,9 +15,26 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+
+    $(document).ready(function(){
+      $('input[type="checkbox"]').click(function(){
+        if($(this).prop("checked") == false){
+            var a='th#'+$(this).get(0).id;
+            for(var i=0; i<document.querySelectorAll(a).length; i++)
+            document.querySelectorAll(a)[i].style.display='none';
+        }
+        else{
+          var a='th#'+$(this).get(0).id;
+            for(var i=0; i<document.querySelectorAll(a).length; i++)
+            document.querySelectorAll(a)[i].style.display='table-cell';
+        }
+    });
+    });
+
   }
 
   onKey(event: any) { this.search();}
+
   search(): void {
     var input, filter, table, tr, th, i;
     input = document.getElementById("searchName");
@@ -31,9 +48,7 @@ export class UserComponent implements OnInit {
           tr[i].style.display = "";
         } else {
           tr[i].style.display = "none";
-        }
-      }       
-    }
+        }}}
   }
 
   getUsers(): void {
