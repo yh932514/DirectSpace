@@ -21,12 +21,12 @@ export class UserComponent implements OnInit {
         if($(this).prop("checked") == false){
             var a='th#'+$(this).get(0).id;
             for(var i=0; i<document.querySelectorAll(a).length; i++)
-            document.querySelectorAll(a)[i].style.display='none';
+            (<HTMLElement>document.querySelectorAll(a)[i]).style.display='none';
         }
         else{
           var a='th#'+$(this).get(0).id;
             for(var i=0; i<document.querySelectorAll(a).length; i++)
-            document.querySelectorAll(a)[i].style.display='table-cell';
+            (<HTMLElement>document.querySelectorAll(a)[i]).style.display='table-cell';
         }
     });
     });
