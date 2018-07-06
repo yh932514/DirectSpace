@@ -9,43 +9,58 @@
                     </div>
                 </div>
                 <div class="col-md-9 mt-sm-4 mt-md-0">
-                    <form>
+          <form  (ngSubmit)="onSubmit()" #appForm="ngForm">
 						<div class="row">
 							<div class="col">
-								<label for="firstName">First name</label>
-							    <input type="text" class="form-control" placeholder="First name">
+								<label for="fname">First name</label>
+							    <input type="text" class="form-control" id="fname" placeholder="First name" required
+									[(ngModel)]="model.fname" name="fname"
+									#fname="ngModel">
 							</div>
 							<div class="col">
-								<label for="lastName">Last name</label>
-							    <input type="text" class="form-control" placeholder="Last name">
+								<label for="lname">Last name</label>
+							    <input type="text" class="form-control" id="lname" placeholder="Last name" required
+									[(ngModel)]="model.lname" name="lname"
+									#lname="ngModel">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-							  <label for="inputEmail4">Email</label>
-							  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+							  <label for="email">Email</label>
+							  <input type="email" class="form-control" id="email" placeholder="Email" required
+								[(ngModel)]="model.email" name="email"
+								#email="ngModel">
 							</div>
 							<div class="form-group col-md-6">
-							<label for="inputPassword4">Phone</label>
-							<input type="phone" class="form-control" id="inputPhone4" placeholder="Phone">
+							<label for="phone">Phone</label>
+							<input type="phone" class="form-control" id="phone" placeholder="Phone" required
+							[(ngModel)]="model.phone" name="phone"
+							#phone="ngModel">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">Address</label>
-							<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+							<label for="address1">Address</label>
+							<input type="text" class="form-control" id="address" placeholder="1234 Main St"  required
+							[(ngModel)]="model.address1" name="address1"
+							#address1="ngModel">
 						</div>
 						<div class="form-group">
-							<label for="inputAddress2">Address 2</label>
-							<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+							<label for="address2">Address 2</label>
+							<input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor"
+							[(ngModel)]="model.address2" name="address2">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-							  <label for="inputCity">City</label>
-							  <input type="text" class="form-control" id="inputCity">
+							  <label for="city">City</label>
+							  <input type="text" class="form-control" id="city"  required
+								[(ngModel)]="model.city" name="city"
+								#city="ngModel">
 							</div>
 							<div class="form-group col-md-4">
-							  <label for="inputState">State</label>
-							  <select id="inputState" class="form-control">
+							  <label for="state">State</label>
+							  <select id="state" class="form-control" required
+								[(ngModel)]="model.state" name="state"
+								#state="ngModel">
 								<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
 								<option value="AZ">Arizona</option>
@@ -100,13 +115,17 @@
 							  </select>
 							</div>
 							<div class="form-group col-md-2">
-							  <label for="inputZip">Zip</label>
-							  <input type="text" class="form-control" id="inputZip">
+							  <label for="zip">Zip</label>
+							  <input type="text" class="form-control" id="zip" required
+								[(ngModel)]="model.zip" name="zip"
+								#zip="ngModel">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="basic-url">Renovation Room</label>
-							<select class="custom-select" id="inputGroupSelect01">
+							<label for="room">Renovation Room</label>
+							<select class="custom-select" id="room"  required
+							[(ngModel)]="model.room" name="room"
+							#room="ngModel">
 								<option selected>Choose ...</option>
 								<option value="1">Kitchen</option>
 								<option value="2">Dining Room</option>
@@ -126,12 +145,29 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1">Question / Comment</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						  </div><br>
-						<button type="button" class="btn btn-warning">Submit</button>
+							<label for="qc">Question / Comment</label>
+							<textarea class="form-control" id="qc" rows="3" [(ngModel)]="model.comment" name="comment"></textarea>
+						</div><br>
+						<button type="submit" class="btn btn-warning">Submit</button>
 					</form> 
-                </div>
+            </div>
             </div>
         </div>
-    </div>
+		</div>
+		
+	
+		<div [hidden]="!submitted">
+			<h2>You submitted the following:</h2>
+			<div class="row">
+				<div class="col-xs-3">FName</div>
+				<div class="col-xs-9  pull-left">{{ model.fname }}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">LName</div>
+				<div class="col-xs-9  pull-left">{{ model.lname }}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">email</div>
+				<div class="col-xs-9  pull-left">{{ model.email }}</div>
+			</div>
+		</div>
