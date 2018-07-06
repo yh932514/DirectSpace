@@ -36,6 +36,7 @@ import { UserComponent } from './admin/user/user.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     HttpClientModule,
      // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
