@@ -1,26 +1,41 @@
 <div class="border-top p-5">
-    <div class="container">
-        <div class="col-md-5 mx-auto">
-          <form class="form-signin">
-              <div class="text-center mb-4">
-                <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                <h1 class="h3 mb-3 font-weight-normal">Please Log In</h1>
-              </div>
+  <div *ngIf="!user">{{error}}</div>
 
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-              </div>
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-              </div>
+  <div *ngIf = "loading">
+    <mat-progress-spinner class="loading" mode="indeterminate"></mat-progress-spinner>
+  </div>
 
-              <div class="checkbox mb-3">
-                <label>
-                  <input type="checkbox" value="remember-me"> Remember me
-                </label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-              <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
-            </form>
-</div></div></div>
+  <div class="container">
+    <div class="col-md-5 mx-auto" *ngIf="!loading && !user">
+
+      <form class="form-signin" (ngSubmit)="login()">
+        <div class="text-center mb-4">
+          <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72"
+               height="72">
+          <h1 class="h3 mb-3 font-weight-normal">Please Log In</h1>
+        </div>
+
+        <div class="form-label-group">
+          <input [(ngModel)]="email" name="email" type="email" id="inputEmail" class="form-control"
+                 placeholder="Email address" required="" autofocus="">
+        </div>
+
+        <div class="form-label-group">
+          <input [(ngModel)]="password" name="password" type="password" id="inputPassword" class="form-control"
+                 placeholder="Password" required="">
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
+      </form>
+  </div>
+
+    <div *ngIf="user">Welcome, {{user.user.name}}</div>
+  </div>
+</div>

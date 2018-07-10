@@ -2,19 +2,20 @@
  * Description: A set of http utility functions.
  */
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {catchError, map} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthService} from '../services/auth.service';
+import {BasicResponse, buildErrorResponse} from './response';
 
-import { BasicResponse, buildErrorResponse } from './response';
+export function get(http: HttpClient, url: string, token?: string): Observable<any> {
 
-export function get(http: HttpClient, url: string, method?: string): Observable<BasicResponse> {
-  method = method || '';
-
-  return http.get<BasicResponse>(url).pipe(
+  return http.get<BasicResponse>(url, {
+    headers: {Authorization: `Bearer ${token}`}
+  }).pipe(
     map(resp => {
-      return <BasicResponse>{ success: true, result: resp };
+      return resp;
     }),
     catchError(err => {
       const resp = buildErrorResponse(err);
@@ -24,14 +25,30 @@ export function get(http: HttpClient, url: string, method?: string): Observable<
 }
 
 
-export function put(http: HttpClient, url: string, payload: any): Observable<BasicResponse> {
+export function put(http: HttpClient, url: string, payload: any, token?: string): Observable<BasicResponse> {
   return http.put<BasicResponse>(`${url}`, payload, {
+    headers: new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`)
+  }).pipe(
+    map(resp => {
+      return resp;
+    }),
+    catchError(err => {
+      const resp = buildErrorResponse<BasicResponse>(err);
+      return of(resp);
+    })
+  );
+}
+
+
+export function post(http: HttpClient, url: string, payload: any, token?: string): Observable<BasicResponse> {
+  return http.post<BasicResponse>(`${url}`, payload, {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
   }).pipe(
     map(resp => {
       return <BasicResponse>{success: true, result: resp};
     }),
     catchError(err => {
+
       const resp = buildErrorResponse<BasicResponse>(err);
       return of(resp);
     })

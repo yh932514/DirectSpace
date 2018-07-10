@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { User } from '../../user';
-import { UserService } from '../../user.service';
+import { UserService } from '../../main/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -52,7 +52,7 @@ export class UserComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers()
+    this.userService.getUsers('')
     .subscribe(users => this.users = users);
   }
 }
