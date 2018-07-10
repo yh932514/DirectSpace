@@ -1,33 +1,28 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {environment} from '../../../environments/environment';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {get} from '../core/http-util';
-import {environment} from '../../../environments/environment';
+import {put} from '../core/http-util';
+import {Appointment} from '../../appointment';
 import {AuthService} from './auth.service';
-import {User} from '../domain/user';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-@Injectable({providedIn: 'root'})
-export class UserService {
+@Injectable()
+export class AppointmentService {
 
-  private usersUrl: string;  // URL to web api
+  private appointmentUrl: string;  // URL to web api
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.usersUrl = environment.host + '/user';
+    this.appointmentUrl = 'http://ec2-18-222-59-12.us-east-2.compute.amazonaws.com:3001/api/appointment';
   }
 
-  /** GET users from the server */
-  getUsers(query): Observable<User[]> {
-    return get(this.http, this.usersUrl + query, this.authService.getToken());
-  }
-
-  getUser(query): Observable<User> {
-    return get(this.http, this.usersUrl + query, this.authService.getToken());
+  /** PUT: add an new appointment */
+  newApp(appointment: Appointment): Observable<Appointment> {
+    return put(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
   }
 
   /**

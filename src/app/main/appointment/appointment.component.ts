@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Appointment} from '../../appointment';
-import {AppointmentService } from '../../appointment.service';
+import {AppointmentService } from '../services/appointment.service';
 
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.scss'], 
+  styleUrls: ['./appointment.component.scss'],
   providers: [ AppointmentService ],
 })
 export class AppointmentComponent {//implements OnInit

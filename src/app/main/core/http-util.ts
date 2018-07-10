@@ -25,8 +25,8 @@ export function get(http: HttpClient, url: string, token?: string): Observable<a
 }
 
 
-export function put(http: HttpClient, url: string, payload: any, token?: string): Observable<BasicResponse> {
-  return http.put<BasicResponse>(`${url}`, payload, {
+export function put(http: HttpClient, url: string, payload: any, token?: string): Observable<any> {
+  return http.put<any>(`${url}`, payload, {
     headers: new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`)
   }).pipe(
     map(resp => {
@@ -40,8 +40,8 @@ export function put(http: HttpClient, url: string, payload: any, token?: string)
 }
 
 
-export function post(http: HttpClient, url: string, payload: any, token?: string): Observable<BasicResponse> {
-  return http.post<BasicResponse>(`${url}`, payload, {
+export function post(http: HttpClient, url: string, payload: any, token?: string): Observable<any> {
+  return http.post<any>(`${url}`, payload, {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
   }).pipe(
     map(resp => {

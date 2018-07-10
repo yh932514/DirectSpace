@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {AuthService} from '../services/auth.service';
 import {UserService} from '../services/user.service';
-import {User} from '../../user';
+import {User} from '../domain/user';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
