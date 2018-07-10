@@ -23,12 +23,6 @@ export class UserService {
 
   /** GET users from the server */
   getUsers(query): Observable<User[]> {
-    // return this.http.get<User[]>(this.usersUrl + query, token)
-    //   .pipe(
-    //     //  tap(users => console.log(`fetched users`)),
-    //     catchError(this.handleError('getUsers', []))
-    //   );
-
     return get(this.http, this.usersUrl + query, this.authService.getToken());
   }
 
