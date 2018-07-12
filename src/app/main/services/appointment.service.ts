@@ -3,9 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {put} from '../core/http-util';
-import {Appointment} from '../../appointment';
+import {put, post} from '../core/http-util';
+import {Appointment} from '../domain/appointment';
 import {AuthService} from './auth.service';
+import { parseLazyRoute } from '@angular/compiler/src/aot/lazy_routes';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,13 +18,20 @@ export class AppointmentService {
   private appointmentUrl: string;  // URL to web api
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.appointmentUrl = 'http://ec2-18-222-59-12.us-east-2.compute.amazonaws.com:3001/api/appointment';
   }
 
   /** PUT: add an new appointment */
   newApp(appointment: Appointment): Observable<Appointment> {
     return put(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
   }
+
+  updateApp(appointment: Appointment): Observable<Appointment> {
+    console.log('check payload');
+    console.log(appointment);
+
+    return post(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
+  }
+
 
   /**
    * Handle Http operation that failed.

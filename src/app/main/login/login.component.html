@@ -36,6 +36,147 @@
       </form>
   </div>
 
-    <div *ngIf="user">Welcome, {{user.user.name}}</div>
+    <div *ngIf="user">
+      <div *ngIf = "user.user.userType !== 'admin'">
+      <h3 style="display: inline-block">Welcome, {{user.user.name}}</h3> 
+      <p style="display: inline-block;">&nbsp;&nbsp;<a id="edit" (click)="appDetail(appointment)" data-toggle="modal" data-target="#editprofile"><i class="fas fa-edit"></i></a>&nbsp;</p> 
+      <p>Email: {{user.user.email}}</p>
+      <div class="table-responsive form-group" id="tbody" style="margin: 40px 0px 0px 0px;"> 
+        <h3>Appointment</h3>         
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th id="name">Name</th>
+                <th id="id">Email</th>
+                <th id="pt">Phone</th>
+                <th id="comments">Address</th>
+                <th id="add">City</th>
+                <th id="email">State</th>
+                <th id="uname">Zip</th>
+                <th id="uname">Renovation Room</th>
+                <th id="uname">Question/Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let appointment of user.appointments; let i=index">
+                <th id="name">{{i+1}}</th>
+                <th id="name">{{user.user.name}}</th>
+                <th id="id">{{user.user.email}}</th>
+                <th id="id">{{appointment.phone}}</th>
+                <th id="pt">{{appointment.address1}} {{appointment.address2}}</th>
+                <th id="comments">{{appointment.city}}</th>
+                <th id="add">{{appointment.state}}</th>
+                <th id="email">{{appointment.zip}}</th>
+                <th id="uname">{{appointment.room}}</th>
+                <th id="uname">{{appointment.comment}}</th>
+                <th><a id="edit" (click)="appDetail(appointment)" data-toggle="modal" data-target="#editApp"><i class="fas fa-edit"></i></a>&nbsp;
+                  <a id="remove" (click)="remove(appointment)"><i class="fas fa-trash-alt"></i></a></th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="modal fade" id="editprofile" tabindex="-1" role="dialog" aria-labelledby="editprofile" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Profile Update</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Username</label>
+                            <input type="text" class="form-control"placeholder="username" >
+                        </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          <!--edit appointment -->
+          <div class="modal fade" id="editApp" tabindex="-1" role="dialog" aria-labelledby="editAppTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Appointment Update</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form class="modal-body" (ngSubmit)="updateApp()">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="model.email" name="email"
+                      #email="ngModel">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Phone</label>
+                      <input type="number" class="form-control" id="Phone" placeholder="Phone Number" [(ngModel)]="model.phone" name="phone"
+                      #phone="ngModel">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"  [(ngModel)]="model.address1" name="address1"
+                    #address1="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"  [(ngModel)]="model.address2" name="address2"
+                    #address2="ngModel">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">City</label>
+                      <input type="text" class="form-control" id="inputCity" [(ngModel)]="model.city" name="city"
+                      #city="ngModel">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control" [(ngModel)]="model.state" name="state"
+                      #state="ngModel">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputZip">Zip</label>
+                      <input type="text" class="form-control" id="inputZip" [(ngModel)]="model.zip" name="zip"
+                      #zip="ngModel">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="model.email" name="email"
+                      #email="ngModel">
+                      <label class="form-check-label" for="gridCheck">
+                        Check me out
+                      </label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editApp">Save changes</button>
+                  </div>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>  <!--not admin-->
   </div>
 </div>

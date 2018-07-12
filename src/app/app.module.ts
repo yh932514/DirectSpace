@@ -26,6 +26,8 @@ import {OhioMaterialModule} from './main/core/ohio-material.module';
 
 
 import { AuthService } from './main/services/auth.service';
+import { UserService } from './main/services/user.service';
+import { AppointmentService } from './main/services/appointment.service';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { AuthService } from './main/services/auth.service';
     OhioMaterialModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AppointmentService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

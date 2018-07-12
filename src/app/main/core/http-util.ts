@@ -42,13 +42,12 @@ export function put(http: HttpClient, url: string, payload: any, token?: string)
 
 export function post(http: HttpClient, url: string, payload: any, token?: string): Observable<any> {
   return http.post<any>(`${url}`, payload, {
-    headers: new HttpHeaders().set('Content-Type', 'application/json')
+    headers: new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`)
   }).pipe(
     map(resp => {
-      return <BasicResponse>{success: true, result: resp};
+      return resp;
     }),
     catchError(err => {
-
       const resp = buildErrorResponse<BasicResponse>(err);
       return of(resp);
     })

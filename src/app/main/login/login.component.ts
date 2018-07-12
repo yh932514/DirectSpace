@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {AuthService} from '../services/auth.service';
 import {UserService} from '../services/user.service';
 import {User} from '../domain/user';
 import {MatSnackBar} from '@angular/material';
+import { Appointment } from '../domain/appointment';
+import{AppointmentService} from '../services/appointment.service'
 
 @Component({
   selector: 'app-login',
@@ -18,11 +20,18 @@ export class LoginComponent implements OnInit {
   user: User;
   error: string;
 
-  constructor(private authService: AuthService, private userService: UserService, public snackBar: MatSnackBar) {
+  model = new Appointment ('','','','',0,'','','','',0 ,'','','','','');
 
+  constructor(private authService: AuthService,private appointmentService: AppointmentService, private userService: UserService, public snackBar: MatSnackBar, private elementRef:ElementRef) {
   }
 
   ngOnInit() {
+  }
+
+  submitted = false;
+
+  onSubmit() { 
+    this.submitted = true; 
   }
 
   login() {
@@ -30,9 +39,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password).subscribe(res => {
 
       console.log(res);
-      if (!res.result.error) {
-        this.authService.setToken(res.result.user.token);
-        this.userService.getUser('?email=' + res.result.user.email).subscribe(user => {
+      if (res.user) {
+        this.authService.setToken(res.user.token);
+        this.userService.getUser('?email=' + res.user.email).subscribe(user => {
           console.log(user);
           this.user = user;
         });
@@ -46,6 +55,26 @@ export class LoginComponent implements OnInit {
       this.loading = false;
     });
 
+  }
+
+  appDetail(app:Appointment){
+    this.model = app;
+    console.log(app);
+    console.log(this.model);
+  }
+
+  updateApp(){
+
+    console.log(this.model);
+
+    this.appointmentService.updateApp(this.model).subscribe(function(something){
+      console.log(something);
+    });
+    document.getElementById("editApp").style.display = "none";
+  }
+
+  remove(app:Appointment){
+    alert("remove");
   }
 
 }
