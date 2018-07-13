@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Appointment} from '../domain/appointment';
 import {AppointmentService } from '../services/appointment.service';
 import {UserService} from '../services/user.service';
+import {Router}from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -13,7 +14,7 @@ export class AppointmentComponent {//implements OnInit
   model = new Appointment ('','','','',0,'','','','',0 ,'','','','','');
   //('First Name', 'Last Name', 'Email', 'phone',Address','Apt' , 'City', 'State', 12345, 'Room', '');
 
-  constructor(private appointmentService: AppointmentService, private userService: UserService) { }
+  constructor(private appointmentService: AppointmentService, private userService: UserService, public router: Router) { }
 
   ngOnInit() {}
 
@@ -21,11 +22,12 @@ export class AppointmentComponent {//implements OnInit
 
   onSubmit() { 
     this.submitted = true; 
-    console.log("yes");
     this.newApp(this.model);
+    this.router.url==='/thank-you'; //go to /thank-you page. cannot check whether successfully create user and appointment
   }
 
   newApp(model: Appointment): void {
+    console.log(model);
     this.userService.createUser({
       firstName: model.firstName,
       lastName: model.lastName,
@@ -35,7 +37,7 @@ export class AppointmentComponent {//implements OnInit
     }).subscribe(user => {
       model.userId = user._id;
       this.appointmentService.newApp(model)
-      .subscribe(abc => console.log(abc));
+      .subscribe(abc => this.model=abc);
     })
 
   }

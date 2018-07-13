@@ -6,6 +6,7 @@ import {User} from '../domain/user';
 import {MatSnackBar} from '@angular/material';
 import { Appointment } from '../domain/appointment';
 import{AppointmentService} from '../services/appointment.service'
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   loading: boolean;
   user: User;
   error: string;
+  res:any;
 
   model = new Appointment ('','','','',0,'','','','',0 ,'','','','','');
 
@@ -39,12 +41,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password).subscribe(res => {
 
       console.log(res);
-      if (res.user) {
-        this.authService.setToken(res.user.token);
-        this.userService.getUser('?email=' + res.user.email).subscribe(user => {
+      this.res = res;
+      if (this.res.user) {
+        this.authService.setToken(this.res.user.token);
+        this.userService.getUser('?email=' + this.res.user.email).subscribe(user => {
           console.log(user);
           this.user = user;
-        });
+        }); 
       }
       else {
         this.snackBar.open('Unable to log you in, please contact system admin for help', 'close', {
@@ -59,14 +62,10 @@ export class LoginComponent implements OnInit {
 
   appDetail(app:Appointment){
     this.model = app;
-    console.log(app);
-    console.log(this.model);
   }
 
   updateApp(){
-
     console.log(this.model);
-
     this.appointmentService.updateApp(this.model).subscribe(function(something){
       console.log(something);
     });

@@ -12,16 +12,16 @@
           <form  (ngSubmit)="onSubmit()" #appForm="ngForm">
 						<div class="row">
 							<div class="col">
-								<label for="fname">First name</label>
-							    <input type="text" class="form-control" id="fname" placeholder="First name" required
-									[(ngModel)]="model.fname" name="fname"
-									#fname="ngModel">
+								<label for="firstName">First name</label>
+							    <input type="text" class="form-control" id="firstName" placeholder="First name" required
+									[(ngModel)]="model.firstName" name="firstName"
+									#firstName="ngModel">
 							</div>
 							<div class="col">
-								<label for="lname">Last name</label>
-							    <input type="text" class="form-control" id="lname" placeholder="Last name" required
-									[(ngModel)]="model.lname" name="lname"
-									#lname="ngModel">
+								<label for="lastName">Last name</label>
+							    <input type="text" class="form-control" id="lastName" placeholder="Last name" required
+									[(ngModel)]="model.lastName" name="lastName"
+									#lastName="ngModel">
 							</div>
 						</div>
 						<div class="form-row">
@@ -131,18 +131,18 @@
 								<div class="form-group col-md-5">
 								<input type="time" class="form-control" id="time" required
 								[(ngModel)]="model.time" name="time"
-								#zip="ngModel"></div></div>
+								#time="ngModel"></div></div>
 								
 							</div>
 						<div class="form-group">
 							<label for="room">Renovation Room</label>
 							<select class="custom-select" id="room"  required
-							[(ngModel)]="model.room" name="room"
-							#room="ngModel">
+							[(ngModel)]="model.projectType" name="projectType"
+							#projectType="ngModel">
 								<option selected>Choose ...</option>
-								<option value="1">Kitchen</option>
-								<option value="2">Dining Room</option>
-								<option value="3">Bath Room</option>
+								<option value="Kitchen">Kitchen</option>
+								<option value="Dining Room">Dining Room</option>
+								<option value="Bath Room">Bath Room</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -172,12 +172,12 @@
 		<div [hidden]="!submitted">
 			<h2>You submitted the following:</h2>
 			<div class="row">
-				<div class="col-xs-3">FName</div>
-				<div class="col-xs-9  pull-left">{{ model.fname }}</div>
+				<div class="col-xs-3">firstName</div>
+				<div class="col-xs-9  pull-left">{{ model.firstName }}</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-3">LName</div>
-				<div class="col-xs-9  pull-left">{{ model.lname }}</div>
+				<div class="col-xs-3">lastName</div>
+				<div class="col-xs-9  pull-left">{{ model.lastName }}</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-3">email</div>
