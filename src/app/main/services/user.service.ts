@@ -32,6 +32,8 @@ export class UserService {
   }
 
   createUser(payload): Observable<User> {
+    console.log('print modeL');
+    console.log(payload);
     return put(this.http, this.usersUrl, payload, '');
   }
 

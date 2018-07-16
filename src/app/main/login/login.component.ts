@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   error: string;
   res:any;
 
-  model = new Appointment ('','','','',0,'','','','',0 ,'','','','','');
+  model = new Appointment ('','','','',0,'','','','',0 ,'','','','','', '');
 
   constructor(private authService: AuthService,private appointmentService: AppointmentService, private userService: UserService, public snackBar: MatSnackBar, private elementRef:ElementRef) {
   }
@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
-  onSubmit() { 
-    this.submitted = true; 
+  onSubmit() {
+    this.submitted = true;
   }
 
   login() {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.userService.getUser('?email=' + this.res.user.email).subscribe(user => {
           console.log(user);
           this.user = user;
-        }); 
+        });
       }
       else {
         this.snackBar.open('Unable to log you in, please contact system admin for help', 'close', {
