@@ -30,15 +30,23 @@ export class AuthService {
 
   logout(): any {
     return null;
-  };
+  }
 
   setToken(token): any {
     this.token = token;
+    localStorage.setItem('direct_spacing_token', token);
+
     return token;
-  };
+  }
 
 
   getToken(): string {
-    return this.token;
-  };
+    if (this.token) {
+      return this.token;
+    } else if (localStorage.getItem('direct_spacing_token')) {
+      return localStorage.getItem('direct_spacing_token');
+    } else {
+      return '';
+    }
+  }
 }

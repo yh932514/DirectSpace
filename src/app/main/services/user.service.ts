@@ -31,10 +31,19 @@ export class UserService {
     return get(this.http, this.usersUrl + query, this.authService.getToken());
   }
 
+  fetchUser(query): any {
+    return get(this.http, this.usersUrl + '/validate' + query, this.authService.getToken());
+  }
+
   createUser(payload): Observable<User> {
+    console.log('print modeL');
+    console.log(payload);
     return put(this.http, this.usersUrl, payload, '');
   }
 
+  register(payload): Observable<User> {
+    return put(this.http, this.usersUrl + '/register', payload);
+  }
 
 
   /**
