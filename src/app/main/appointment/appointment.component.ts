@@ -11,7 +11,7 @@ import {Router}from '@angular/router';
 })
 export class AppointmentComponent {//implements OnInit
 
-  model = new Appointment ('','','','',0,'','','','',0 ,'','','','','');
+  model = new Appointment ('','','','',null,'','','','', null ,'','','','','');
   //('First Name', 'Last Name', 'Email', 'phone',Address','Apt' , 'City', 'State', 12345, 'Room', '');
 
   constructor(private appointmentService: AppointmentService, private userService: UserService, public router: Router) { }
