@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -47,6 +47,7 @@ import { AppointmentService } from './main/services/appointment.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -58,8 +59,7 @@ import { AppointmentService } from './main/services/appointment.service';
     MatButtonModule,
     MatIconModule,
     BrowserAnimationsModule,
-    OhioMaterialModule
-  ],
+    OhioMaterialModule],
   providers: [
     AuthService,
     AppointmentService,

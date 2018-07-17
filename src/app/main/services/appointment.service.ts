@@ -6,7 +6,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {put, post} from '../core/http-util';
 import {Appointment} from '../domain/appointment';
 import {AuthService} from './auth.service';
-import { parseLazyRoute } from '@angular/compiler/src/aot/lazy_routes';
+import {parseLazyRoute} from '@angular/compiler/src/aot/lazy_routes';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,6 +15,7 @@ const httpOptions = {
 @Injectable()
 export class AppointmentService {
 
+  private appointment: Appointment;
   private appointmentUrl: string;  // URL to web api
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -30,6 +31,14 @@ export class AppointmentService {
     console.log(appointment);
 
     return post(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
+  }
+
+  setAppointment(appointment: Appointment): void {
+    this.appointment = appointment;
+  }
+
+  getAppointment(): Appointment {
+    return this.appointment;
   }
 
 
