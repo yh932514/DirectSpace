@@ -15,7 +15,7 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-
+  private user: User;
   private usersUrl: string;  // URL to web api
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -45,6 +45,13 @@ export class UserService {
     return put(this.http, this.usersUrl + '/register', payload);
   }
 
+  setter (user) {
+   this.user = user;
+  }
+
+  getter () :  User {
+    return this.user;
+  }
 
   /**
    * Handle Http operation that failed.

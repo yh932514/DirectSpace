@@ -7,6 +7,9 @@ import {MatSnackBar} from '@angular/material';
 import { Appointment } from '../domain/appointment';
 import{AppointmentService} from '../services/appointment.service'
 import { observable } from 'rxjs';
+import {Router} from '@angular/router';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   model = new Appointment ('','','','',0,'','','','',0 ,'','','','','', '');
 
-  constructor(private authService: AuthService,private appointmentService: AppointmentService, private userService: UserService, public snackBar: MatSnackBar, private elementRef:ElementRef) {
+  constructor(private authService: AuthService,private appointmentService: AppointmentService, private userService: UserService, public snackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit() {
@@ -47,7 +50,10 @@ export class LoginComponent implements OnInit {
         this.userService.getUser('?email=' + this.res.user.email).subscribe(user => {
           console.log(user);
           this.user = user;
+          this.userService.setter(user);
         });
+      //  console.log(this.location);
+         this.router.navigate(['/profile']);
       }
       else {
         this.snackBar.open('Unable to log you in, please contact system admin for help', 'close', {
@@ -57,23 +63,5 @@ export class LoginComponent implements OnInit {
       }
       this.loading = false;
     });
-
   }
-
-  appDetail(app:Appointment){
-    this.model = app;
-  }
-
-  updateApp(){
-    console.log(this.model);
-    this.appointmentService.updateApp(this.model).subscribe(function(something){
-      console.log(something);
-    });
-    document.getElementById("editApp").style.display = "none";
-  }
-
-  remove(app:Appointment){
-    alert("remove");
-  }
-
 }

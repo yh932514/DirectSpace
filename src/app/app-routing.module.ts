@@ -9,6 +9,7 @@ import { ThankYouComponent } from './main/thank-you/thank-you.component';
 import { SignupComponent } from './main/signup/signup.component';
 import { LoginComponent } from './main/login/login.component';
 import { HelpComponent } from './main/help/help.component';
+import { ProfileComponent } from './main/profile/profile.component';
 
 import { UserComponent } from './admin/user/user.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'help', component: HelpComponent},
   {path: 'admin/user', component: UserComponent},
+  {path: 'profile', component: ProfileComponent},
   //also add component page on app.module.ts
   // otherwise redirect to home
   {path: '**', redirectTo: '/'}

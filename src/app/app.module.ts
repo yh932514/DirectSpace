@@ -19,6 +19,7 @@ import {LoginComponent} from './main/login/login.component';
 import {HelpComponent} from './main/help/help.component';
 import {AdminComponent} from './admin/admin.component';
 import {UserComponent} from './admin/user/user.component';
+import {ProfileComponent } from './main/profile/profile.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +43,8 @@ import { AppointmentService } from './main/services/appointment.service';
     LoginComponent,
     HelpComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

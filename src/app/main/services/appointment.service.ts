@@ -3,10 +3,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {put, post} from '../core/http-util';
+import {put, post, remove} from '../core/http-util';
 import {Appointment} from '../domain/appointment';
 import {AuthService} from './auth.service';
 import {parseLazyRoute} from '@angular/compiler/src/aot/lazy_routes';
+import { url } from 'inspector';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -33,12 +34,15 @@ export class AppointmentService {
     return post(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
   }
 
-  setAppointment(appointment: Appointment): void {
-    this.appointment = appointment;
+  deleteApp(appointment: Appointment) {
+    console.log('delete');
+    const url = environment.host+'/appointment?_id='+appointment._id;
+    console.log(appointment);
+    return remove(this.http, url, appointment, this.authService.getToken());
   }
 
-  getAppointment(): Appointment {
-    return this.appointment;
+  setAppointment(appointment:Appointment){
+    this.appointment = appointment;
   }
 
 

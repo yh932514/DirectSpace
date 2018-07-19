@@ -15,6 +15,7 @@ import {UserService} from './services/user.service';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
 import {HelpComponent} from './help/help.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import {HelpComponent} from './help/help.component';
     ThankYouComponent,
     SignupComponent,
     LoginComponent,
-    HelpComponent
+    HelpComponent,
+    ProfileComponent
   ],
   providers: [
     UserService
