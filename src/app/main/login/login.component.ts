@@ -8,7 +8,6 @@ import { Appointment } from '../domain/appointment';
 import{AppointmentService} from '../services/appointment.service'
 import { observable } from 'rxjs';
 import {Router} from '@angular/router';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 
 @Component({
@@ -52,7 +51,6 @@ export class LoginComponent implements OnInit {
           this.user = user;
           this.userService.setter(user);
         });
-      //  console.log(this.location);
          this.router.navigate(['/profile']);
       }
       else {
