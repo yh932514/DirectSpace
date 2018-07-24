@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {MainRoutingModule} from './main-routing.module';
 
-import {SettingsProfileComponent} from './settings-profile/settings-profile.component';
 import {MainComponent} from './main.component';
 import {AppointmentComponent} from './appointment/appointment.component';
 import {OurstoryComponent} from './ourstory/ourstory.component';
@@ -29,7 +28,6 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   declarations: [
     MainComponent,
-    SettingsProfileComponent,
     AppointmentComponent,
     OurstoryComponent,
     ThankYouComponent,

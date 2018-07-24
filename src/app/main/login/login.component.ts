@@ -42,14 +42,12 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.email, this.password).subscribe(res => {
 
-      console.log(res);
       this.res = res;
       if (this.res.user) {
         this.authService.setToken(this.res.user.token);
         this.userService.getUser('?email=' + this.res.user.email).subscribe(user => {
           console.log(user);
           this.user = user;
-          this.userService.setter(user);
         });
          this.router.navigate(['/profile']);
       }

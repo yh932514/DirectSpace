@@ -10,7 +10,6 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 
 import {HomeComponent} from './main/home/home.component';
-import {SettingsProfileComponent} from './main/settings-profile/settings-profile.component';
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
 import {ThankYouComponent} from './main/thank-you/thank-you.component';
@@ -35,7 +34,6 @@ import { AppointmentService } from './main/services/appointment.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    SettingsProfileComponent,
     AppointmentComponent,
     OurstoryComponent,
     ThankYouComponent,

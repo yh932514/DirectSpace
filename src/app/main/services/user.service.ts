@@ -3,8 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {get} from '../core/http-util';
-import {put} from '../core/http-util';
+import {get, put, post} from '../core/http-util';
 import {environment} from '../../../environments/environment';
 import {AuthService} from './auth.service';
 import {User} from '../domain/user';
@@ -45,12 +44,9 @@ export class UserService {
     return put(this.http, this.usersUrl + '/register', payload);
   }
 
-  setter (user) {
-   this.user = user;
-  }
-
-  getter () :  User {
-    return this.user;
+  updateUser(user:User): any{
+    console.log(this.usersUrl + user)
+    //return post(this.http, this.usersUrl + user, this.authService.getToken());
   }
 
   /**

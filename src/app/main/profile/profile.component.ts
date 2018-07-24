@@ -16,25 +16,26 @@ import * as $ from 'jquery'
 export class ProfileComponent implements OnInit {
   res: any;
   user: User;
-  model = new Appointment('', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '');
+  model = new Appointment('', '', '', '', null, '', '', '', '', null, '', '', '', '', '', '');
+  uModel = new User('','', '',null,'','','', '','','',null, '', '');
 
   constructor(private authService: AuthService, private userService: UserService, private appointmentService: AppointmentService, private router: Router, private elementRef: ElementRef) { }
 
   ngOnInit() {
     this.userService.getUser('').subscribe(user => {
       this.user = user;
-      this.userService.setter(user);
     });
 
-    $(window).bind("load", function(){
-      console.log($("#appointment"));
-      $("#pro").click(function () {
+    $( "#account" ).ready(function(){
+      console.log("bbbb");
+      $("#pro").on("click", function () {
         $("#app").removeClass("active");
         $("#pro").addClass("active");
         $("#profile").show();
         $("#appointment").hide();
       });
-      $("#app").click(function () {
+      $("#app").on("click", function () {
+        console.log("aaaaaa");
         $("#pro").removeClass("active");
         $("#app").addClass("active");
         $("#profile").hide();
@@ -44,9 +45,20 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  app(){
+    console.log("aaaaaa");
+        $("#pro").removeClass("active");
+        $("#app").addClass("active");
+        $("#profile").hide();
+        $("#appointment").show();
+  }
 
   appDetail(app: Appointment) {
     this.model = app;
+  }
+
+  userDetail(user: User) {
+    this.uModel = user;
   }
 
   updateApp() {
@@ -55,11 +67,18 @@ export class ProfileComponent implements OnInit {
     document.getElementById("editApp").style.display = "none";
   }
 
+  updateUser(){
+    this.userService.updateUser(this.uModel).subscribe(function (something) {
+    });
+    document.getElementById("editProfile").style.display = "none";
+  }
+
   remove(app: Appointment, ele: Element) {
     this.appointmentService.deleteApp(app).subscribe(function (something) {
       if (something.result) {
         //refresh
-        console.log(this);
+        this.app = new Appointment('', '', '', '', null, '', '', '', '', null, '', '', '', '', '', '');
+        console.log(app);
         //this.router.navigate(['/profile']);
       }
     });

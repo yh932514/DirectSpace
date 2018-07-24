@@ -28,16 +28,11 @@ export class AppointmentService {
   }
 
   updateApp(appointment: Appointment): Observable<Appointment> {
-    console.log('check payload');
-    console.log(appointment);
-
     return post(this.http, environment.host + '/appointment', appointment, this.authService.getToken());
   }
 
   deleteApp(appointment: Appointment) {
-    console.log('delete');
     const url = environment.host+'/appointment?_id='+appointment._id;
-    console.log(appointment);
     return remove(this.http, url, appointment, this.authService.getToken());
   }
 

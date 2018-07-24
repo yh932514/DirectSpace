@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {HomeComponent} from './main/home/home.component';
-import {SettingsProfileComponent} from './main/settings-profile/settings-profile.component';
 import {AppointmentComponent} from './main/appointment/appointment.component';
 import {OurstoryComponent} from './main/ourstory/ourstory.component';
 import { ThankYouComponent } from './main/thank-you/thank-you.component';
@@ -16,7 +15,6 @@ import { UserComponent } from './admin/user/user.component';
 const routes: Routes = [
   {path: '', pathMatch: 'prefix', component: HomeComponent},
   {path: 'index', redirectTo: ''},
-  {path: 'settings-profile', component: SettingsProfileComponent},
   {path: 'appointment', component: AppointmentComponent},
   {path: 'ourstory', component: OurstoryComponent},
   {path: 'thank-you', component: ThankYouComponent},

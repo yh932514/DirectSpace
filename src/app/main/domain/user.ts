@@ -4,7 +4,6 @@ export class User {
               public comments: string,
               public phone: number,
               public status: string,
-              public address: string,
               public firstName: string,
               public lastName: string,
               public address1: string,
