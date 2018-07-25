@@ -26,7 +26,7 @@ export class UserService {
     return get(this.http, this.usersUrl + query, this.authService.getToken());
   }
 
-  getUser(query): Observable<User> {
+  getUser(query:string): Observable<User> {
     return get(this.http, this.usersUrl + query, this.authService.getToken());
   }
 
@@ -44,9 +44,13 @@ export class UserService {
     return put(this.http, this.usersUrl + '/register', payload);
   }
 
-  updateUser(user:User): any{
-    console.log(this.usersUrl + user)
-    //return post(this.http, this.usersUrl + user, this.authService.getToken());
+  updateUser(user:any): any{
+    console.log(user.user);
+    return post(this.http, this.usersUrl + "?_id="+user.user._id, user.user, this.authService.getToken());
+  }
+
+  clean(): void {
+    this.user = undefined;
   }
 
   /**

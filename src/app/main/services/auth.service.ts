@@ -39,6 +39,15 @@ export class AuthService {
     return token;
   }
 
+  deleteToken():any{
+    console.log(2);
+    if(this.getToken){
+      console.log(3);
+
+      console.log(localStorage.removeItem('direct_spacing_token'));
+    }
+
+  }
 
   getToken(): string {
     if (this.token) {

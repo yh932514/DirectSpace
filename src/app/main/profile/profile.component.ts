@@ -15,7 +15,7 @@ import * as $ from 'jquery'
 })
 export class ProfileComponent implements OnInit {
   res: any;
-  user: User;
+  user: any;
   model = new Appointment('', '', '', '', null, '', '', '', '', null, '', '', '', '', '', '');
   uModel = new User('','', '',null,'','','', '','','',null, '', '');
 
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       this.user = user;
     });
 
-    $( "#account" ).ready(function(){
+    $( window ).ready(function(){
       console.log("bbbb");
       $("#pro").on("click", function () {
         $("#app").removeClass("active");
@@ -34,18 +34,11 @@ export class ProfileComponent implements OnInit {
         $("#profile").show();
         $("#appointment").hide();
       });
-      $("#app").on("click", function () {
-        console.log("aaaaaa");
-        $("#pro").removeClass("active");
-        $("#app").addClass("active");
-        $("#profile").hide();
-        $("#appointment").show();
-      });
     });
 
   }
 
-  app(){
+  app1(){
     console.log("aaaaaa");
         $("#pro").removeClass("active");
         $("#app").addClass("active");
@@ -57,8 +50,8 @@ export class ProfileComponent implements OnInit {
     this.model = app;
   }
 
-  userDetail(user: User) {
-    this.uModel = user;
+  userDetail(user: any) {
+    this.uModel = Object.assign({}, user.user);
   }
 
   updateApp() {
@@ -68,7 +61,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateUser(){
-    this.userService.updateUser(this.uModel).subscribe(function (something) {
+    this.userService.updateUser(this.user).subscribe(function (something) {
     });
     document.getElementById("editProfile").style.display = "none";
   }
@@ -77,13 +70,18 @@ export class ProfileComponent implements OnInit {
     this.appointmentService.deleteApp(app).subscribe(function (something) {
       if (something.result) {
         //refresh
-        this.app = new Appointment('', '', '', '', null, '', '', '', '', null, '', '', '', '', '', '');
+        $("#appointment").load(location.href + " #appointment");
+        $("#appointment").show();
         console.log(app);
         //this.router.navigate(['/profile']);
       }
     });
   }
-  refresh() {
-    this.router.navigate(['/profile']);
+ 
+  closeUser(){
+    console.log("qwe");
+    this.user.user = Object.assign({},this.uModel);
   }
+
+
 }

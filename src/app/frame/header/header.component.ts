@@ -24,4 +24,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  logout(){
+    console.log(1);
+    this.authService.deleteToken();
+    this.userService.clean();
+  }
+
 }

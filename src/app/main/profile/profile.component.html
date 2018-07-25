@@ -9,7 +9,7 @@
               <i class="fas fa-angle-right"></i>
             </div>
           </button>
-          <button class="btn btn-block list-group-item list-group-item-action" id="app" onclick="app()">
+          <button class="btn btn-block list-group-item list-group-item-action" id="app" (click)="app1()">
             Appointment
             <div style="color:white" class="float-right">
               <i class="fas fa-angle-right"></i>
@@ -84,7 +84,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder={{user.user.username}} [(ngModel)]="uModel.Username" name="username" #username="ngModel">
+                    <input type="text" class="form-control" placeholder={{user.user.username}} [(ngModel)]="user.user.username" name="username" #username="ngModel">
                   </div>
                   <div class="form-group col-md-6">
                       <label>First Name</label>
@@ -116,7 +116,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeUser()">Close</button>
                   <button type="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editprofile">Save changes</button>
                 </div>
               </form>
