@@ -16,21 +16,21 @@
         </div>
 
         <div class="form-label-group">
-          <input [(ngModel)]="email" name="email" type="email" id="inputEmail" class="form-control"
+          <input [(ngModel)]="email" name="email" type="email" id="inputEmail" aria-label="Email" class="form-control"
                  placeholder="Email address" required="" autofocus="">
         </div>
 
         <div class="form-label-group">
-          <input [(ngModel)]="password" name="password" type="password" id="inputPassword" class="form-control"
+          <input [(ngModel)]="password" name="password" type="password" id="inputPassword" aria-label="Password" class="form-control"
                  placeholder="Password" required="">
         </div>
 
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me" aria-label="Remember me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" aria-label="Sign in">Sign in</button>
         <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
       </form>
     </div>

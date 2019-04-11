@@ -3,13 +3,13 @@
     <div class="row border-top p-5">
       <div class="col-md-2">
         <div class="list-group font-weight-light">
-          <button class="btn btn-block list-group-item list-group-item-action active" id="pro">
+          <button class="btn btn-block list-group-item list-group-item-action active" id="pro" aria-label="Profile">
             Profile
             <div style="color:white" class="float-right">
               <i class="fas fa-angle-right"></i>
             </div>
           </button>
-          <button class="btn btn-block list-group-item list-group-item-action" id="app" (click)="app1()">
+          <button class="btn btn-block list-group-item list-group-item-action" id="app" aria-label="Appointment" (click)="app1()">
             Appointment
             <div style="color:white" class="float-right">
               <i class="fas fa-angle-right"></i>
@@ -19,7 +19,7 @@
       </div>
       <div class="col-md-10">
         <div id="profile" class="container">
-          <h3 style="display: inline-block">Welcome, {{user.user.username}}</h3>
+          <h1 style="display: inline-block">Welcome, {{user.user.username}}</h1>
           <p style="display: inline-block;">&nbsp;&nbsp;
             <a (click)="userDetail(user)" data-toggle="modal" data-target="#editprofile">
               <i class="fas fa-edit"></i>
@@ -84,19 +84,19 @@
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder={{user.user.username}} [(ngModel)]="user.user.username" name="username" #username="ngModel">
+                    <input type="text" class="form-control" aria-label="Username" placeholder={{user.user.username}} [(ngModel)]="user.user.username" name="username" #username="ngModel">
                   </div>
                   <div class="form-group col-md-6">
                       <label>First Name</label>
-                      <input type="text" class="form-control" placeholder={{user.user.firstName}} [(ngModel)]="uModel.firstName" name="firstName" #firstName="ngModel">
+                      <input type="text" class="form-control" aria-label="First Name" placeholder={{user.user.firstName}} [(ngModel)]="uModel.firstName" name="firstName" #firstName="ngModel">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder={{user.user.lastName}} [(ngModel)]="uModel.lastName" name="lastName" #lastName="ngModel">
+                        <input type="text" class="form-control" aria-label="Last Name" placeholder={{user.user.lastName}} [(ngModel)]="uModel.lastName" name="lastName" #lastName="ngModel">
                       </div>
                   <div class="form-group col-md-6">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder={{user.user.email}} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="uModel.email" name="uEmail" #uEmail="ngModel">
+                    <input type="email" class="form-control" aria-label="Email" placeholder={{user.user.email}} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="uModel.email" name="uEmail" #uEmail="ngModel">
                     <div [hidden]="uEmail.valid || uEmail.pristine"
                     class="alert alert-danger">
                     Please enter a valid email address
@@ -104,7 +104,7 @@
                   </div>
                   <div class="form-group col-md-6">
                       <label>Phone</label>
-                      <input type="tel" class="form-control" placeholder={{user.user.phone}} maxlength="10" pattern="[1-9]{1}[0-9]{9}" [(ngModel)]="uModel.phone" name="uPhone" #uPhone="ngModel">
+                      <input type="tel" class="form-control" aria-label="Phone" placeholder={{user.user.phone}} maxlength="10" pattern="[1-9]{1}[0-9]{9}" [(ngModel)]="uModel.phone" name="uPhone" #uPhone="ngModel">
                       <div [hidden]="uPhone.valid || uPhone.pristine"
                       class="alert alert-danger">
                       Please enter a valid phone number
@@ -112,12 +112,12 @@
                   </div>
                   <div class="form-group col-md-12">
                         <label>Address</label>
-                        <input type="address" class="form-control" placeholder={{user.user.address1}} [(ngModel)]="uModel.address1" name="address1" #address1="ngModel">
+                        <input type="address" class="form-control" aria-label="Address" placeholder={{user.user.address1}} [(ngModel)]="uModel.address1" name="address1" #address1="ngModel">
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeUser()">Close</button>
-                  <button type="button" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editprofile">Save changes</button>
+                  <button type="button" class="btn btn-secondary" aria-label="Close" data-dismiss="modal" (click)="closeUser()" aria-label="Close">Close</button>
+                  <button type="button" type="submit" class="btn btn-primary" aria-label="Save changes" data-toggle="modal" data-target="#editprofile">Save changes</button>
                 </div>
               </form>
             </div>
@@ -137,7 +137,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="Email">Email</label>
-                    <input type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="model.email" name="aEmail" #aEmail="ngModel">
+                    <input type="email" class="form-control" aria-label="Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="model.email" name="aEmail" #aEmail="ngModel">
                     <div [hidden]="aEmail.valid || aEmail.pristine"
                     class="alert alert-danger">
                     Please enter a valid email address
@@ -145,7 +145,7 @@
                   </div>
                   <div class="form-group col-md-6">
                     <label for="Phone">Phone</label>
-                    <input type="tel" class="form-control" id="phone" maxlength="10" pattern="[1-9]{1}[0-9]{9}" [(ngModel)]="model.phone" name="phone" #phone="ngModel">
+                    <input type="tel" class="form-control" aria-label="Phone" id="phone" maxlength="10" pattern="[1-9]{1}[0-9]{9}" [(ngModel)]="model.phone" name="phone" #phone="ngModel">
                     <div [hidden]="phone.valid || phone.pristine"
                     class="alert alert-danger">
                     Please enter a valid phone number
@@ -154,18 +154,18 @@
                 </div>
                 <div class="form-group">
                   <label for="Address">Address</label>
-                  <input type="text" class="form-control" id="Address" [(ngModel)]="model.address1" name="address1"
+                  <input type="text" class="form-control" aria-label="Address" id="Address" [(ngModel)]="model.address1" name="address1"
                     #address1="ngModel">
                 </div>
                 <div class="form-group">
                   <label for="Address2">Address 2</label>
-                  <input type="text" class="form-control" id="Address2" [(ngModel)]="model.address2"
+                  <input type="text" class="form-control" aria-label="Address 2" id="Address2" [(ngModel)]="model.address2"
                     name="address2" #address2="ngModel">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="City">City</label>
-                    <input type="text" class="form-control" id="City" [(ngModel)]="model.city" name="city" #city="ngModel">
+                    <input type="text" class="form-control" aria-label="City" id="City" [(ngModel)]="model.city" name="city" #city="ngModel">
                   </div>
                   <div class="form-group col-md-4">
                     <label for="state">State</label>
@@ -226,12 +226,12 @@
                   </div>
                   <div class="form-group col-md-2">
                     <label for="Zip">Zip</label>
-                    <input type="text" class="form-control" id="Zip" [(ngModel)]="model.zip" name="zip" #zip="ngModel">
+                    <input type="text" class="form-control" aria-label="Zip" id="Zip" [(ngModel)]="model.zip" name="zip" #zip="ngModel">
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editApp">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editApp" aria-label="Save changes">Save changes</button>
                 </div>
               </form>
 
